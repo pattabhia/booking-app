@@ -8,8 +8,6 @@ import (
 
 const conferenceTickets int = 50
 
-var bookingDetails = []string{}
-var userTickets int
 var remainingTickets = conferenceTickets
 
 func ValidateUserInputs(firstName, lastName string, userTickets int) bool {
