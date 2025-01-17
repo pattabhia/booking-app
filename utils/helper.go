@@ -5,6 +5,9 @@ import (
 	strings "strings"
 )
 
+// PrintBookings prints the booking details and the number of bookings for the given list of booking details.
+// It takes a slice of strings representing the booking details as input.
+// The function extracts the first names from each booking detail and prints them along with the total number of bookings.
 func PrintBookings(bookingDetails []string) {
 	firstNames := []string{}
 	var index int = 0
