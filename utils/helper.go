@@ -2,19 +2,19 @@ package utils
 
 import (
 	fmt "fmt"
-	strings "strings"
+	"strings"
 )
 
-// PrintBookings prints the booking details and the number of bookings for the given list of booking details.
-// It takes a slice of strings representing the booking details as input.
-// The function extracts the first names from each booking detail and prints them along with the total number of bookings.
-func PrintBookings(bookingDetails []string) {
+func PrintBookings(bookings []map[string]string) {
 	firstNames := []string{}
+	lastNames := []string{}
+	ticketsCounts := []string{}
 	var index int = 0
-	for _, booking := range bookingDetails {
-		var names = strings.Fields(booking)
-		firstNames = append(firstNames, names[0])
+	for _, booking := range bookings {
+		firstNames = append(firstNames, booking["firstName"])
+		lastNames = append(lastNames, booking["lastName"])
+		ticketsCounts = append(ticketsCounts, booking["ticketsCount"])
 		index++
 	}
-	fmt.Printf("There are %d bookings for the %s!\n", index, firstNames)
+	fmt.Printf("There are %d bookings for the %s %s having %s!\n", index, firstNames, lastNames, strings.Join(ticketsCounts, ", "))
 }

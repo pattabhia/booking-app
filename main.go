@@ -9,7 +9,6 @@ var conferenceName string = "GopherCon"
 
 const conferenceTickets int = 50
 
-var bookingDetails = []string{}
 var userTickets int
 var firstName string
 var lastName string
@@ -23,7 +22,7 @@ func main() {
 		firstName, lastName, userTickets = getUserInputs(firstName, lastName, userTickets)
 		isValidInputs := service.ValidateUserInputs(firstName, lastName, userTickets)
 		if isValidInputs {
-			service.BookTickets(firstName, lastName, userTickets, bookingDetails)
+			service.BookTickets(firstName, lastName, userTickets)
 		}
 	}
 }

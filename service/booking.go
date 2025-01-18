@@ -4,11 +4,13 @@ import (
 	"booking-app/utils"
 	"fmt"
 	"regexp"
+	"strconv"
 )
 
 const conferenceTickets int = 50
 
 var remainingTickets = conferenceTickets
+var bookings = make([]map[string]string, 0)
 
 func ValidateUserInputs(firstName, lastName string, userTickets int) bool {
 	switch {
@@ -31,16 +33,24 @@ func ValidateUserInputs(firstName, lastName string, userTickets int) bool {
 	}
 }
 
-func BookTickets(firstName, lastName string, userTickets int, bookingDetails []string) {
+func BookTickets(firstName, lastName string, userTickets int) {
 	if remainingTickets == 0 {
 		fmt.Println("Sorry, there are no more tickets available!")
 		return
 	}
-	bookingDetails = append(bookingDetails, firstName+" "+lastName)
+	var userMap = make(map[string]string)
+	userMap["firstName"] = firstName
+	userMap["lastName"] = lastName
+	userMap["ticketsCount"] = strconv.FormatInt(int64(userTickets), 10)
+
+	for key, value := range userMap {
+		fmt.Printf("Key: %s, Value:%s \n", key, value)
+	}
+	bookings = append(bookings, userMap)
 	remainingTickets = calculateRemainingTickets(userTickets, remainingTickets)
 	fmt.Printf("Thank you, %s! You have bought %d tickets!\n", firstName, userTickets)
 	fmt.Printf("There are %d tickets remaining!\n", remainingTickets)
-	utils.PrintBookings(bookingDetails)
+	utils.PrintBookings(bookings)
 
 }
 
