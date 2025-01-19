@@ -6,6 +6,7 @@ import (
 )
 
 func PrintBookings(bookings []map[string]string) {
+
 	firstNames := []string{}
 	lastNames := []string{}
 	ticketsCounts := []string{}
